@@ -34,7 +34,13 @@ def add_expense():
     note = get_note()
 
     db.add_expense(category, amount, note)
-    print(f"Expense for ${amount:,.2f} add to '{category}'.")
+    print(f"\nExpense for ${amount:,.2f} add to '{category}'.")
+
+    category_budget = db.get_budget(category)
+    total_spent_in_category = db.total_category(category)
+
+    if category_budget and total_spent_in_category >= category_budget:
+        print(f"Budget limit for '{category}' has been exceeded.")
 
     press_enter_to_continue()
 

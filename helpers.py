@@ -1,7 +1,7 @@
 def get_amount():
     while True:
         try:
-            amount = float(input("\nEnter amount: $"))
+            amount = float(input("Enter amount: $"))
             if amount > 0: return amount
             print("Amount spent must be greater than zero.")
         except ValueError:
@@ -9,7 +9,7 @@ def get_amount():
 
 def get_category():
     while True:
-        category = input("Enter purchase category: ").strip()
+        category = input("\nEnter purchase category: ").strip()
         if category: return category
         print("Category cannot be blank.")
 

@@ -50,3 +50,11 @@ def set_budget(category, amount):
 def get_budgets():
     with get_conn() as conn:
         return conn.execute("SELECT category, amount FROM budgets").fetchall()
+
+def get_budget(category):
+    with get_conn() as conn:
+        return conn.execute("SELECT amount FROM budgets WHERE category = ?", (category,)).fetchone()
+
+def total_category(category):
+    with get_conn() as conn:
+        return conn.execute("SELECT SUM(amount) FROM expenses WHERE category = ?", (category,)).fetchone()
